@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Angkringan PASPER — Umbulsari, Jember</title>
+<meta name="description" content="Angkringan PASPER di Umbulsari, Jember. Tempat sederhana untuk menikmati sajian favorit dan menghabiskan malam bersama.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS — ubah warna & font di sini ============ */
+:root{
+  --char:#171715; --esp:#29221D; --cream:#F2E8D8; --amber:#D6A45D; --olive:#77745B;
+  --serif:'Fraunces',Georgia,'Times New Roman',serif;
+  --sans:'Manrope',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --pad:clamp(20px,5vw,72px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{font-family:var(--sans);background:var(--char);color:var(--cream);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.wrap{max-width:1200px;margin:0 auto;padding:0 var(--pad)}
+section{padding:clamp(72px,11vw,140px) 0}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.08;letter-spacing:-.01em}
+h2{font-size:clamp(2.2rem,5.5vw,4rem)}
+h2 em,h1 em{font-style:italic;color:var(--amber);font-weight:500}
+.tag{font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);font-weight:600;display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.tag::before{content:"";width:36px;height:1px;background:currentColor}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 28px;border-radius:999px;font-weight:600;font-size:.92rem;transition:transform .25s,background .25s,color .25s,border-color .25s}
+.btn-amber{background:var(--amber);color:var(--char)}
+.btn-amber:hover{transform:translateY(-2px);background:#e4b571}
+.btn-line{border:1px solid rgba(242,232,216,.4)}
+.btn-line:hover{border-color:var(--amber);color:var(--amber)}
+.light{background:var(--cream);color:var(--char)}
+.light .tag{color:#8a5f22}
+.light h2 em{color:#9a6a26}
+
+/* image fallback: warna hangat saat gambar gagal dimuat */
+.ph{background:linear-gradient(135deg,var(--esp),#3a2e24 60%,var(--olive));position:relative;overflow:hidden}
+.ph img{width:100%;height:100%;object-fit:cover}
+
+/* ============ NAVBAR ============ */
+.nav{position:fixed;inset:0 0 auto;z-index:50;transition:background .3s,backdrop-filter .3s,padding .3s;padding:22px 0}
+.nav.solid{background:rgba(23,23,21,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:12px 0;box-shadow:0 1px 0 rgba(242,232,216,.08)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{font-family:var(--serif);line-height:1;font-size:1.15rem;letter-spacing:.14em}
+.logo span{display:block;color:var(--amber);font-style:italic;letter-spacing:.34em;font-size:.95rem;margin-top:3px}
+.menu{display:flex;align-items:center;gap:clamp(20px,3vw,40px)}
+.menu a:not(.btn){font-size:.9rem;opacity:.85;position:relative;padding:6px 0}
+.menu a:not(.btn)::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--amber);transition:width .3s}
+.menu a:not(.btn):hover::after{width:100%}
+.menu .btn{min-height:42px;padding:0 22px}
+.burger{display:none;width:48px;height:48px;position:relative;z-index:60}
+.burger i{position:absolute;left:12px;right:12px;height:2px;background:var(--cream);transition:.3s}
+.burger i:nth-child(1){top:18px}.burger i:nth-child(2){top:28px}
+.burger[aria-expanded=true] i:nth-child(1){top:23px;transform:rotate(45deg)}
+.burger[aria-expanded=true] i:nth-child(2){top:23px;transform:rotate(-45deg)}
+@media(max-width:860px){
+  .burger{display:block}
+  .menu{position:fixed;inset:0;background:var(--char);flex-direction:column;justify-content:center;gap:26px;transform:translateX(100%);transition:transform .4s;visibility:hidden}
+  .menu.open{transform:none;visibility:visible}
+  .menu a:not(.btn){font-family:var(--serif);font-size:2rem;opacity:1}
+}
+
+/* ============ HERO ============ */
+.hero{min-height:100svh;display:flex;align-items:flex-end;position:relative;padding:130px 0 90px;background:var(--esp)}
+.hero .bg{position:absolute;inset:0}
+.hero .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(23,23,21,.55),rgba(23,23,21,.3) 35%,rgba(23,23,21,.92)),linear-gradient(90deg,rgba(23,23,21,.75),transparent 70%)}
+.hero .wrap{position:relative;width:100%}
+.hero h1{font-size:clamp(2.8rem,8.5vw,6.6rem);max-width:12ch;margin-bottom:26px}
+.hero p{max-width:46ch;font-size:clamp(1rem,1.5vw,1.15rem);opacity:.88;margin-bottom:36px}
+.hero .cta{display:flex;flex-wrap:wrap;gap:14px}
+.hero .rule{position:absolute;right:var(--pad);bottom:90px;width:1px;height:110px;background:rgba(242,232,216,.25);overflow:hidden}
+.hero .rule::after{content:"";position:absolute;left:0;top:0;width:1px;height:40px;background:var(--amber);animation:drop 2.4s ease-in-out infinite}
+@keyframes drop{0%{transform:translateY(-40px)}100%{transform:translateY(110px)}}
+.scroll{position:absolute;right:calc(var(--pad) - 18px);bottom:210px;writing-mode:vertical-rl;font-size:.68rem;letter-spacing:.3em;opacity:.6}
+@media(max-width:700px){.hero .rule,.scroll{display:none}}
+.glow{animation:flick 5s ease-in-out infinite alternate}
+@keyframes flick{from{opacity:.85}to{opacity:1}}
+
+/* ============ INTRO ============ */
+.intro .grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(32px,6vw,90px);align-items:center}
+.intro h2{margin-bottom:26px}
+.intro p{max-width:46ch;font-size:1.08rem;color:#4a4238}
+.intro .pics{position:relative;padding-bottom:70px}
+.intro .big{aspect-ratio:4/5;border-radius:6px 80px 6px 6px;width:82%}
+.intro .small{position:absolute;right:0;bottom:0;width:46%;aspect-ratio:1;border-radius:50%;border:8px solid var(--cream)}
+.intro .no{position:absolute;left:-6px;top:-30px;font-family:var(--serif);font-style:italic;font-size:6rem;line-height:1;color:var(--amber);opacity:.5}
+@media(max-width:820px){.intro .grid{grid-template-columns:1fr}.intro .pics{order:-1}}
+
+/* ============ MENU ============ */
+.menu-sec{background:var(--esp)}
+.head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:28px;margin-bottom:44px}
+.filters{display:flex;gap:10px;flex-wrap:wrap}
+.filters button{min-height:44px;padding:0 22px;border-radius:999px;border:1px solid rgba(242,232,216,.25);font-size:.88rem;transition:.25s}
+.filters button:hover{border-color:var(--amber)}
+.filters button.on{background:var(--amber);border-color:var(--amber);color:var(--char);font-weight:600}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:26px}
+.card{display:flex;flex-direction:column}
+.card .ph{aspect-ratio:4/3;border-radius:14px}
+.card .ph img{transition:transform .6s}
+.card:hover .ph img{transform:scale(1.06)}
+.card .row{display:flex;justify-content:space-between;gap:12px;align-items:baseline;margin:16px 0 4px;border-bottom:1px dotted rgba(242,232,216,.3);padding-bottom:8px}
+.card h3{font-size:1.4rem}
+.card .price{font-weight:700;color:var(--amber);white-space:nowrap}
+.card p{font-size:.9rem;opacity:.72}
+.card.hide{display:none}
+.card.pop{animation:pop .45s both}
+@keyframes pop{from{opacity:0;transform:translateY(12px)}}
+.menu-sec .more{margin-top:36px}
+
+/* ============ FEATURE ============ */
+.feature{position:relative;min-height:80vh;display:flex;align-items:center;overflow:hidden;padding:100px 0}
+.feature .bg{position:absolute;inset:0}
+.feature .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(23,23,21,.92),rgba(23,23,21,.35))}
+.feature .wrap{position:relative}
+.feature .ghost{position:absolute;right:-1vw;top:50%;transform:translateY(-50%);font-family:var(--serif);font-style:italic;font-size:clamp(7rem,26vw,22rem);line-height:1;color:transparent;-webkit-text-stroke:1px rgba(214,164,93,.35);pointer-events:none;user-select:none}
+.feature h2{font-size:clamp(2.6rem,7vw,5.5rem);max-width:10ch;margin-bottom:22px}
+.feature p{max-width:40ch;opacity:.88}
+
+/* ============ GALLERY ============ */
+.masonry{columns:3 240px;column-gap:16px}
+.masonry button{display:block;width:100%;margin:0 0 16px;border-radius:10px;overflow:hidden;break-inside:avoid;position:relative}
+.masonry .ph img{transition:transform .6s,filter .4s;height:100%}
+.masonry button:hover img{transform:scale(1.05);filter:brightness(1.1)}
+.masonry button::after{content:attr(data-cap);position:absolute;left:0;right:0;bottom:0;padding:30px 14px 12px;font-size:.8rem;text-align:left;background:linear-gradient(transparent,rgba(23,23,21,.85));opacity:0;transition:.3s}
+.masonry button:hover::after,.masonry button:focus-visible::after{opacity:1}
+.lb{position:fixed;inset:0;z-index:100;background:rgba(15,15,13,.94);display:none;align-items:center;justify-content:center;padding:20px}
+.lb.open{display:flex;animation:pop .3s}
+.lb img{max-height:82vh;max-width:100%;border-radius:8px;object-fit:contain}
+.lb p{text-align:center;margin-top:12px;font-size:.9rem;opacity:.8}
+.lb .x,.lb .nv{position:absolute;width:52px;height:52px;border-radius:50%;background:rgba(242,232,216,.1);font-size:1.5rem}
+.lb .x{top:16px;right:16px}.lb .nv{top:50%;margin-top:-26px}.lb .pv{left:12px}.lb .nx{right:12px}
+
+/* ============ LOKASI ============ */
+.loc .grid{display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(30px,5vw,70px)}
+.loc h2{margin-bottom:28px}
+.loc dl{margin-bottom:30px}
+.loc dt{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:#8a5f22;font-weight:700;margin-top:20px}
+.loc dd{font-size:1.05rem}
+.loc .small{font-size:.8rem;opacity:.7;margin-top:6px}
+.loc .btn-amber{background:var(--char);color:var(--cream)}
+.mapbox{min-height:340px;border-radius:14px;background:var(--esp);color:var(--cream);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;gap:18px;border:1px solid rgba(23,23,21,.2)}
+.mapbox iframe{width:100%;height:100%;min-height:340px;border:0;border-radius:14px}
+@media(max-width:820px){.loc .grid{grid-template-columns:1fr}}
+
+/* ============ CTA ============ */
+.cta-sec{text-align:center;background:var(--esp)}
+.cta-sec h2{font-size:clamp(2.6rem,7vw,5.2rem);margin-bottom:22px}
+.cta-sec p{max-width:44ch;margin:0 auto 34px;opacity:.85}
+.cta-sec .tag{justify-content:center}.cta-sec .small{font-size:.8rem;opacity:.6;margin-top:18px}
+
+/* ============ FOOTER ============ */
+footer{padding:56px 0 30px;border-top:1px solid rgba(242,232,216,.1)}
+footer .top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px;align-items:flex-start}
+footer nav{display:flex;gap:22px;flex-wrap:wrap;font-size:.9rem;opacity:.8}
+footer nav a{padding:8px 0}
+footer .tg{font-family:var(--serif);font-style:italic;color:var(--amber);margin-top:14px}
+footer .bot{margin-top:40px;font-size:.8rem;opacity:.55;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+/* ============ REVEAL (satu pola, ringan) ============ */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .8s,transform .8s}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .rv{opacity:1;transform:none}
+}
+
+/* ============ FINISHING PREMIUM ============ */
+:root{--amber:#dfb16d;--cream:#f5eee2;--char:#141412;--esp:#211b17}
+body{background-image:radial-gradient(ellipse at 12% 18%,rgba(214,164,93,.055),transparent 34%),radial-gradient(ellipse at 88% 62%,rgba(119,116,91,.07),transparent 32%)}
+.nav.solid{border-bottom:1px solid rgba(223,177,109,.14)}
+.btn{letter-spacing:.01em}
+.btn-amber{box-shadow:0 8px 24px rgba(214,164,93,.13)}
+.btn-amber:hover{box-shadow:0 12px 30px rgba(214,164,93,.2)}
+.card .ph,.masonry button,.intro .big,.intro .small{box-shadow:0 14px 36px rgba(0,0,0,.13)}
+.card .ph{border:1px solid rgba(242,232,216,.1)}
+.card .row{border-bottom-color:rgba(242,232,216,.22)}
+.filters button{backdrop-filter:blur(8px)}
+.feature .bg::after{background:linear-gradient(90deg,rgba(20,20,18,.94),rgba(20,20,18,.55) 58%,rgba(20,20,18,.25))}
+.mapbox{border:1px solid rgba(23,23,21,.12);border-radius:16px;padding:clamp(24px,4vw,48px);background:rgba(255,255,255,.28)}
+.cta-sec{background:linear-gradient(135deg,#201a15,#30251b 60%,#1b1915)}
+footer{border-top:1px solid rgba(223,177,109,.16)}
+@media(max-width:600px){.cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 12px}.card h3{font-size:1.12rem}.card .price{font-size:.85rem}.card p{font-size:.82rem}.filters{gap:7px}.filters button{padding:0 14px;min-height:40px;font-size:.8rem}.head{margin-bottom:30px}.hero{padding-top:120px}.mapbox{padding:24px}}
+
+</style>
+</head>
+<body>
+
+<!-- ============ NAVBAR ============ -->
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a href="#beranda" class="logo" aria-label="Angkringan Pasper">ANGKRINGAN<span>PASPER</span></a>
+    <button class="burger" id="burger" aria-label="Buka menu" aria-expanded="false" aria-controls="menu"><i></i><i></i></button>
+    <nav class="menu" id="menu">
+      <a href="#beranda">Beranda</a><a href="#menu-favorit">Menu</a><a href="#tentang">Tentang</a><a href="#galeri">Galeri</a><a href="#lokasi">Lokasi</a>
+      <a href="#menu-favorit" class="btn btn-amber">Jelajahi Menu</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- ============ HERO ============ -->
+<section class="hero" id="beranda" style="padding-bottom:90px">
+  <div class="bg ph glow" data-src="hero"></div>
+  <div class="wrap">
+    <p class="tag">Angkringan • Umbulsari, Jember</p>
+    <h1>Hangatnya Malam, Nikmatnya <em>Kebersamaan.</em></h1>
+    <p>Tempat sederhana untuk menikmati sajian favorit, berbagi cerita, dan menghabiskan malam dengan suasana yang akrab.</p>
+    <div class="cta"><a href="#menu-favorit" class="btn btn-amber">Jelajahi Menu</a><a href="#lokasi" class="btn btn-line">Temukan Lokasi</a></div>
+  </div>
+  <span class="scroll" aria-hidden="true">GULIR</span><span class="rule" aria-hidden="true"></span>
+</section>
+
+<!-- ============ INTRO ============ -->
+<section class="light intro" id="tentang">
+  <div class="wrap grid">
+    <div class="rv">
+      <p class="tag">Rasa lokal • Suasana akrab</p>
+      <h2>Kesederhanaan yang Selalu <em>Dirindukan.</em></h2>
+      <p>Angkringan bukan hanya soal makanan. Ada kehangatan, obrolan santai, dan momen sederhana yang membuat malam terasa lebih istimewa.</p>
+    </div>
+    <div class="pics rv">
+      <span class="no" aria-hidden="true">01</span>
+      <div class="big ph" data-src="intro1"></div>
+      <div class="small ph" data-src="intro2"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MENU ============ -->
+<section class="menu-sec" id="menu-favorit">
+  <div class="wrap">
+    <div class="head rv">
+      <div><p class="tag">Menu</p><h2>Temukan <em>Favoritmu.</em></h2></div>
+      <div class="filters" role="group" aria-label="Filter kategori menu" id="filters">
+        <button class="on" data-f="all" aria-pressed="true">Semua</button>
+        <button data-f="makanan" aria-pressed="false">Makanan</button>
+        <button data-f="sate" aria-pressed="false">Sate &amp; Bakaran</button>
+        <button data-f="minuman" aria-pressed="false">Minuman</button>
+      </div>
+    </div>
+    <div class="cards" id="cards"></div>
+    <a href="#kontak" class="btn btn-line more">Lihat Semua Menu</a>
+  </div>
+</section>
+
+<!-- ============ FEATURE ============ -->
+<section class="feature">
+  <div class="bg ph" data-src="feature"></div>
+  <span class="ghost" aria-hidden="true">bara</span>
+  <div class="wrap rv">
+    <p class="tag">Dibakar dengan suasana</p>
+    <h2>Dari Bara, Hadirkan <em>Rasa.</em></h2>
+    <p>Temukan kenikmatan sajian angkringan dalam suasana malam yang santai dan penuh cerita.</p>
+  </div>
+</section>
+
+<!-- ============ GALERI ============ -->
+<section class="light" id="galeri">
+  <div class="wrap">
+    <div class="rv" style="margin-bottom:44px"><p class="tag">Galeri</p><h2>Malam di <em>Angkringan.</em></h2></div>
+    <div class="masonry" id="masonry"></div>
+  </div>
+</section>
+
+<!-- ============ LOKASI ============ -->
+<section class="light loc" id="lokasi" style="padding-top:0">
+  <div class="wrap grid">
+    <div class="rv">
+      <p class="tag">Lokasi</p>
+      <h2>Temukan <em>Kami.</em></h2>
+      <dl>
+        <dt>Nama</dt><dd>Angkringan PASPER</dd>
+        <dt>Alamat</dt><dd id="addr">Jl. Ahmad Yani No. 16, Umbulsari, Jember, Jawa Timur</dd>
+        <dt>Jam buka</dt><dd id="hours">Silakan hubungi kami untuk informasi jam buka.</dd>
+      </dl>
+      <a id="mapBtn" class="btn btn-amber" target="_blank" rel="noopener">Buka Google Maps</a>
+    </div>
+    <div class="mapbox rv">
+      <p style="font-family:var(--serif);font-size:1.5rem">Lihat rute di Google Maps</p>
+      <p style="opacity:.7;font-size:.9rem;max-width:34ch">Temukan lokasi kami dan rencanakan kunjunganmu dengan mudah.</p>
+      <a id="mapBtn2" class="btn btn-line" target="_blank" rel="noopener">Buka Google Maps</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KONTAK ============ -->
+<section class="cta-sec" id="kontak">
+  <div class="wrap rv">
+    <p class="tag">Kontak</p>
+    <h2>Malam Ini, Mampir <em>Yuk.</em></h2>
+    <p>Luangkan waktu untuk menikmati sajian favorit dan suasana angkringan yang akrab.</p>
+    <a id="wa" class="btn btn-amber" target="_blank" rel="noopener">Chat via WhatsApp</a>
+    <p class="small" id="waNote"></p>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <div><a href="#beranda" class="logo">ANGKRINGAN<span>PASPER</span></a><p class="tg">Tempat sederhana, cerita yang istimewa.</p></div>
+      <nav aria-label="Footer"><a href="#beranda">Beranda</a><a href="#menu-favorit">Menu</a><a href="#tentang">Tentang</a><a href="#galeri">Galeri</a><a href="#lokasi">Lokasi</a></nav>
+      <p style="font-size:.9rem;opacity:.8">Umbulsari, Jember<br>Jawa Timur, Indonesia</p>
+    </div>
+    <div class="bot"><span>© <span id="yr"></span> Angkringan PASPER. Seluruh hak cipta dilindungi.</span><span><!-- Tambahkan tautan Instagram/Facebook di sini jika ada --></span></div>
+  </div>
+</footer>
+
+<!-- ============ LIGHTBOX ============ -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Pratinjau foto">
+  <button class="x" id="lbX" aria-label="Tutup">×</button>
+  <button class="nv pv" id="lbP" aria-label="Foto sebelumnya">‹</button>
+  <button class="nv nx" id="lbN" aria-label="Foto berikutnya">›</button>
+  <figure><img id="lbImg" alt=""><p id="lbCap"></p></figure>
+</div>
+
+<script>
+/* ============ DATA — EDIT DI SINI ============ */
+// Info bisnis
+var INFO = {
+  mapQuery: "Angkringan PASPER Umbulsari Jember",   // kata kunci pencarian Google Maps
+  mapEmbed: "",                                       // (opsional) tempel URL embed Google Maps di sini
+  whatsapp: "",                                       // Nomor WhatsApp format internasional tanpa tanda +
+  waMessage: "Halo Angkringan PASPER, saya ingin bertanya."
+};
+
+// Gambar untuk tampilan website
+var U = function(id,w){return "https://images.unsplash.com/"+id+"?auto=format&fit=crop&q=70&w="+(w||800);};
+var IMG = {
+  hero:U("photo-1555939594-58d7cb561ad1",1600),
+  intro1:U("photo-1414235077428-338989a2e8c0",900),
+  intro2:U("photo-1544025162-d76694265947",600),
+  feature:U("photo-1529692236671-f1f6cf9683ba",1600)
+};
+
+// Data menu. cat: makanan | sate | minuman
+var MENU = [
+  {n:"Sate Usus",d:"Dibakar di atas bara, disajikan hangat.",p:2000,cat:"sate",img:U("photo-1555939594-58d7cb561ad1")},
+  {n:"Sate Telur Puyuh",d:"Tusukan kecil untuk teman ngobrol.",p:3000,cat:"sate",img:U("photo-1529042410759-befb1204b468")},
+  {n:"Sate Ati Ampela",d:"Pilihan klasik bagi pencinta sate.",p:3500,cat:"sate",img:U("photo-1544025162-d76694265947")},
+  {n:"Nasi Kucing",d:"Porsi kecil, pas untuk menemani malam.",p:4000,cat:"makanan",img:U("photo-1414235077428-338989a2e8c0")},
+  {n:"Gorengan",d:"Camilan hangat untuk dibagi bersama.",p:1500,cat:"makanan",img:U("photo-1529692236671-f1f6cf9683ba")},
+  {n:"Teh Hangat",d:"Minuman sederhana yang menenangkan.",p:3000,cat:"minuman",img:U("photo-1564890369478-c89ca6d9cde9")},
+  {n:"Kopi Hitam",d:"Pahit yang cocok untuk obrolan panjang.",p:4000,cat:"minuman",img:U("photo-1495474472287-4d71bcdd2085")},
+  {n:"Es Teh",d:"Segar dan dingin.",p:3000,cat:"minuman",img:U("photo-1556679343-c7306c1976bc")}
+];
+
+// Data galeri
+var GAL = [
+  {s:U("photo-1414235077428-338989a2e8c0",900),c:"Suasana malam",r:"4/5"},
+  {s:U("photo-1555939594-58d7cb561ad1",900),c:"Sate bakaran",r:"1/1"},
+  {s:U("photo-1495474472287-4d71bcdd2085",900),c:"Minuman",r:"4/3"},
+  {s:U("photo-1529692236671-f1f6cf9683ba",900),c:"Meja dan tempat duduk",r:"3/4"},
+  {s:U("photo-1544025162-d76694265947",900),c:"Makanan",r:"1/1"},
+  {s:U("photo-1529042410759-befb1204b468",900),c:"Momen kebersamaan",r:"4/5"}
+];
+
+/* ============ HELPER GAMBAR (fallback jika gagal dimuat) ============ */
+function loadImg(box,src,alt){
+  var im=new Image(); im.loading="lazy"; im.decoding="async"; im.alt=alt||"";
+  im.onerror=function(){im.remove();};      // tetap tampil gradient hangat
+  im.src=src; box.appendChild(im); return im;
+}
+document.querySelectorAll("[data-src]").forEach(function(el){
+  loadImg(el,IMG[el.dataset.src],"");
+  el.setAttribute("aria-hidden","true");
+});
+
+/* ============ MENU + FILTER ============ */
+var rp=function(n){return "Rp"+n.toLocaleString("id-ID");};
+var cards=document.getElementById("cards");
+MENU.forEach(function(m){
+  var a=document.createElement("article"); a.className="card"; a.dataset.cat=m.cat;
+  a.innerHTML='<div class="ph"></div><div class="row"><h3></h3><span class="price"></span></div><p></p>';
+  a.querySelector("h3").textContent=m.n; a.querySelector(".price").textContent=rp(m.p); a.querySelector("p").textContent=m.d;
+  loadImg(a.querySelector(".ph"),m.img,m.n);
+  cards.appendChild(a);
+});
+var fb=document.querySelectorAll("#filters button");
+fb.forEach(function(b){b.addEventListener("click",function(){
+  fb.forEach(function(x){x.classList.remove("on");x.setAttribute("aria-pressed","false");});
+  b.classList.add("on"); b.setAttribute("aria-pressed","true");
+  cards.querySelectorAll(".card").forEach(function(c){
+    var show=b.dataset.f==="all"||c.dataset.cat===b.dataset.f;
+    c.classList.toggle("hide",!show);
+    if(show){c.classList.remove("pop");void c.offsetWidth;c.classList.add("pop");}
+  });
+});});
+
+/* ============ GALERI + LIGHTBOX ============ */
+var mas=document.getElementById("masonry");
+GAL.forEach(function(g,i){
+  var b=document.createElement("button"); b.className="ph"; b.dataset.cap=g.c; b.style.aspectRatio=g.r;
+  b.setAttribute("aria-label","Perbesar foto: "+g.c);
+  loadImg(b,g.s,g.c);
+  b.addEventListener("click",function(){openLb(i);}); mas.appendChild(b);
+});
+var lb=document.getElementById("lb"),cur=0,lastFocus;
+function showLb(){document.getElementById("lbImg").src=GAL[cur].s;document.getElementById("lbImg").alt=GAL[cur].c;document.getElementById("lbCap").textContent=GAL[cur].c;}
+function openLb(i){cur=i;lastFocus=document.activeElement;showLb();lb.classList.add("open");document.body.style.overflow="hidden";document.getElementById("lbX").focus();}
+function closeLb(){lb.classList.remove("open");document.body.style.overflow="";if(lastFocus)lastFocus.focus();}
+function step(d){cur=(cur+d+GAL.length)%GAL.length;showLb();}
+document.getElementById("lbX").onclick=closeLb;
+document.getElementById("lbP").onclick=function(){step(-1);};
+document.getElementById("lbN").onclick=function(){step(1);};
+lb.addEventListener("click",function(e){if(e.target===lb)closeLb();});
+document.addEventListener("keydown",function(e){
+  if(!lb.classList.contains("open"))return;
+  if(e.key==="Escape")closeLb(); if(e.key==="ArrowLeft")step(-1); if(e.key==="ArrowRight")step(1);
+});
+
+/* ============ NAVBAR ============ */
+var nav=document.getElementById("nav"),burger=document.getElementById("burger"),menu=document.getElementById("menu");
+function onScroll(){nav.classList.toggle("solid",window.scrollY>40);}
+window.addEventListener("scroll",onScroll,{passive:true}); onScroll();
+function toggleMenu(open){menu.classList.toggle("open",open);burger.setAttribute("aria-expanded",open);document.body.style.overflow=open?"hidden":"";}
+burger.addEventListener("click",function(){toggleMenu(!menu.classList.contains("open"));});
+menu.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(){toggleMenu(false);});});
+document.addEventListener("keydown",function(e){if(e.key==="Escape")toggleMenu(false);});
+
+/* ============ LOKASI & WHATSAPP ============ */
+var q=encodeURIComponent(INFO.mapQuery);
+var mapUrl="https://www.google.com/maps/search/?api=1&query="+q;
+document.getElementById("mapBtn").href=mapUrl; document.getElementById("mapBtn2").href=mapUrl;
+if(INFO.mapEmbed){var box=document.querySelector(".mapbox");box.innerHTML='<iframe src="'+INFO.mapEmbed+'" loading="lazy" title="Peta lokasi Angkringan PASPER" referrerpolicy="no-referrer-when-downgrade"></iframe>';}
+var wa=document.getElementById("wa");
+if(INFO.whatsapp){wa.href="https://wa.me/"+INFO.whatsapp+"?text="+encodeURIComponent(INFO.waMessage);}
+else{wa.href=mapUrl;wa.textContent="Lihat Lokasi";document.getElementById("waNote").textContent="";}
+
+/* ============ REVEAL + TAHUN ============ */
+document.getElementById("yr").textContent=new Date().getFullYear();
+var els=document.querySelectorAll(".rv");
+if("IntersectionObserver" in window){
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}});},{threshold:.12});
+  els.forEach(function(el){io.observe(el);});
+}else{els.forEach(function(el){el.classList.add("in");});}
+</script>
+</body>
+</html>
